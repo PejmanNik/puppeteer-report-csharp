@@ -1,0 +1,3 @@
+[submodule "src/js-dependency"]
+	path = src/js-dependency
+	url = https://github.com/PejmanNik/puppeteer-report.git

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>puppeteer_report</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Pejman Nikram</Authors>
+    <Copyright>Pejman Nikram</Copyright>
+    <PackageProjectUrl>https://github.com/PejmanNik/puppeteer-report-csharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/PejmanNik/puppeteer-report-csharp</RepositoryUrl>
+    <PackageTags>report pdf html htmlToPDF html-to-pdf</PackageTags>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PuppeteerSharp" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\js-dependency\out\core\bundle.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+
+</Project>
