@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fix typo and improve readme
+- Fix example project file address issue
 
 ## [1.0.0] - 2020-10-03
 ### Added

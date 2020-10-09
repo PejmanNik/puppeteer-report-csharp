@@ -18,13 +18,13 @@ https://github.com/PejmanNik/puppeteer-report
 
 
 ```
-Install-Package puppeteer-report -Version 1.0.0
+Install-Package puppeteer-report
 ```
 
 or
 
 ```
-dotnet add package puppeteer-report --version 1.0.0
+dotnet add package puppeteer-report
 ```
 
 
