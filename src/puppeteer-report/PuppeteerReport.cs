@@ -16,24 +16,9 @@ namespace PuppeteerReportCsharp
             return await reader.ReadToEndAsync();
         }
 
-        public async Task<byte[]> PDF(string file, PdfOptions? options)
+        public async Task<byte[]> PDFPage(Page page, PdfOptions? options)
         {
             var coreJS = await GetReortCoreJS();
-
-            await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
-            var browser = await Puppeteer.LaunchAsync(new LaunchOptions
-            {
-                Headless = true,
-                Args = new[]
-                {
-                     "--no-sandbox",
-                     "--disable-setuid-sandbox",
-                     "--disable-dev-shm-usage",
-                }
-            });
-
-            var page = await browser.NewPageAsync();
-            await page.GoToAsync("file:///" + file);
 
             var marginTop = options?.MarginOptions?.Top ?? "0px";
             var marginBottom = options?.MarginOptions?.Bottom ?? "0px";
@@ -54,8 +39,6 @@ namespace PuppeteerReportCsharp
                 headerPdfBuffer
             );
 
-            await browser.CloseAsync();
-
             // convert serialized JS Uint8Array to C# byte[]
             var resultByte = new byte[result.Count];
             for (int i = 0; i < resultByte.Length; i++)
@@ -63,6 +46,36 @@ namespace PuppeteerReportCsharp
                 resultByte[i] = result.Value<byte>(i.ToString());
             }
             return resultByte;
+        }
+
+        public async Task PDFPage(Page page, string outputFile, PdfOptions? options)
+        {
+            var result = await PDFPage(page, options);
+            await File.WriteAllBytesAsync(outputFile, result);
+        }
+
+        public async Task<byte[]> PDF(string file, PdfOptions? options)
+        {
+            await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
+            var browser = await Puppeteer.LaunchAsync(new LaunchOptions
+            {
+                Headless = true,
+                Args = new[]
+                {
+                     "--no-sandbox",
+                     "--disable-setuid-sandbox",
+                     "--disable-dev-shm-usage",
+                }
+            });
+
+            var page = await browser.NewPageAsync();
+            await page.GoToAsync("file:///" + file);
+
+            var result = await PDFPage(page, options);
+
+            await browser.CloseAsync();
+
+            return result;
         }
 
         public async Task PDF(string file, string outputFile, PdfOptions? options)

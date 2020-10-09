@@ -10,11 +10,11 @@ namespace examples
         static async Task Main(string[] args)
         {
             var example = "basicWithJs";
-            string filePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), $"../../../../js-dependency/examples/${example}/index.html");
+            string filePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), $"../../../../js-dependency/examples/{example}/index.html");
 
             var puppeteer = new PuppeteerReport();
             await puppeteer.PDF(filePath,
-                "Result.pdf", new PuppeteerSharp.PdfOptions
+                "Result.pdf" , new PuppeteerSharp.PdfOptions
                 {
                     Format = PuppeteerSharp.Media.PaperFormat.A4,
                     PreferCSSPageSize = true,

@@ -63,6 +63,37 @@ await puppeteer.PDF(@"D:\index.html",
 
 ```
 
+Or using custom puppeteer page instance
+
+```c#
+
+using PuppeteerReportCsharp;
+
+.
+.
+.
+
+await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
+var browser = await Puppeteer.LaunchAsync(new LaunchOptions());
+var page = await browser.NewPageAsync();
+
+var puppeteer = new PuppeteerReport();
+await puppeteer.PDF(page,
+    "Result.pdf", new PuppeteerSharp.PdfOptions
+    {
+        Format = PuppeteerSharp.Media.PaperFormat.A4,
+        PreferCSSPageSize = true,
+        MarginOptions = new PuppeteerSharp.Media.MarginOptions
+        {
+            Top = "10mm",
+            Left = "10mm",
+            Right = "10mm",
+            Bottom = "10mm"
+        }
+    });
+
+```
+
 ### Run Examples
 
 Clone the repo and run `init-js-dependency.sh` file to init git submodule and fetch the original puppeteer-report library, Then restore the solution and run examples project.
