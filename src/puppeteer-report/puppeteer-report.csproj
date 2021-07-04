@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
+    <Nullable>disable</Nullable>
     <RootNamespace>puppeteer_report</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Pejman Nikram</Authors>
@@ -12,12 +12,17 @@
     <PackageTags>report pdf html htmlToPDF html-to-pdf</PackageTags>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.1.1</Version>
+    <Version>3.0.1</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="PuppeteerSharp" Version="2.0.4" />
+    <PackageReference Include="PuppeteerSharp" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>

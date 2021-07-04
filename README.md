@@ -45,7 +45,7 @@ using PuppeteerReportCsharp;
 .
 .
 .
-
+await new BrowserFetcher().DownloadAsync();
 var puppeteer = new PuppeteerReport();
 await puppeteer.PDF(@"D:\index.html",
     "Result.pdf", new PuppeteerSharp.PdfOptions
@@ -73,7 +73,7 @@ using PuppeteerReportCsharp;
 .
 .
 
-await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
+await new BrowserFetcher().DownloadAsync();
 var browser = await Puppeteer.LaunchAsync(new LaunchOptions());
 var page = await browser.NewPageAsync();
 
@@ -96,4 +96,4 @@ await puppeteer.PDF(page,
 
 ### Run Examples
 
-Clone the repo and run `init-js-dependency.sh` file to init git submodule and fetch the original puppeteer-report library, Then restore the solution and run examples project.
+Clone the repo and run `init-js-dependency.sh` file to init git submodule and fetch the original puppeteer-report library, Then restore the solution and run examples project. keep in mind that the first run may take a while because it will try to download the latest version of the puppeteer
