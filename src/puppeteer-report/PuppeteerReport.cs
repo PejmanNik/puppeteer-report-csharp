@@ -56,7 +56,6 @@ namespace PuppeteerReportCsharp
 
         public async Task<byte[]> PDF(string file, PdfOptions? options)
         {
-            await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
             var browser = await Puppeteer.LaunchAsync(new LaunchOptions
             {
                 Headless = true,
