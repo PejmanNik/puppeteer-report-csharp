@@ -78,7 +78,7 @@ var browser = await Puppeteer.LaunchAsync(new LaunchOptions());
 var page = await browser.NewPageAsync();
 
 var puppeteer = new PuppeteerReport();
-await puppeteer.PDF(page,
+await puppeteer.PDFPage(page,
     "Result.pdf", new PuppeteerSharp.PdfOptions
     {
         Format = PuppeteerSharp.Media.PaperFormat.A4,
